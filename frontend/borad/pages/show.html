@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>글쓰기</title>
+    <link rel="stylesheet" href="../css/show.css" />
+  </head>
+  <body>
+    <div class="write-post-container">
+      <!-- 페이지 상단 타이틀 -->
+      <header class="write-post-header">
+        <h1>글쓰기</h1>
+      </header>
+
+      <!-- 텍스트 입력 영역 -->
+      <main class="content-editor">
+        <textarea 
+          placeholder="내용을 작성해주세요." 
+          class="post-textarea"
+        ></textarea>
+      </main>
+      <!-- 이미지 업로드 버튼 -->
+      <div class="image-upload-button">
+        <label for="imageUpload" class="imageupload-label">
+          <img src="../images/borad_upload.png" alt="이미지 추가 아이콘" />
+        </label>
+        <input type="file" id="imageUpload" accept="image/*" hidden />
+      </div>
+      <!-- 홈 인디케이터 (모바일 UX용, 선택사항)
+      <div class="home-indicator"></div> -->
+
+      <div class="submit-button">
+      <button onclick="location.href='index.html'">완료</button>
+    </div>
+     
+
+  </body>
+</html>
