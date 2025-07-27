@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>경복궁</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- 상단 바 -->
+<div class="top-bar">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  
+    <div class="top-center">
+      <div class="logo-text">Koring</div>
+    </div>
+  
+    <div class="top-right">
+      <select class="language-select">
+        <option>Language</option>
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+      </select>
+      <button class="camera-btn" onclick="openCamera()">
+        <img src="../../images/camera.png" alt="Camera" />
+      </button>
+    </div>
+  </div>
+  
+<!-- 사이드바 -->
+<div id="sidebar" class="sidebar hidden">
+  <button class="close-btn" onclick="toggleSidebar()">✕</button>
+
+  <!-- 메뉴 아이템 2개씩 -->
+  <div class="sidebar-grid">
+    <div class="sidebar-item">
+      <img src="../../images/home.png" class="menu-icon" />
+      <span>Home</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/reservation.png" class="menu-icon" />
+      <span>Reservation</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/foodai.png" class="menu-icon" />
+      <span>Food AI</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/album.png" class="menu-icon" />
+      <span>Album</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/map.png" class="menu-icon" />
+      <span>Map</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/community.png" class="menu-icon" />
+      <span>Community</span>
+    </div>
+  </div>
+
+  <!-- 명소 항목도 2개씩 -->
+  <div class="sidebar-grid landmark-list">
+    <div class="sidebar-item">
+      <a href="../landmarks/gyeongbokgung.html">
+      <img src="../../images/gyeongbokgung.png" class="landmark-img" />
+      </a>
+      <span>경복궁</span>
+    </div>
+    <div class="sidebar-item">
+      <a href="../landmarks/namsan.html">
+      <img src="../../images/namsan.png" class="landmark-img" />
+      </a>
+      <span>남산</span>
+    </div>
+    <div class="sidebar-item">
+      <a href="../landmarks/yisunshin.html">
+      <img src="../../images/yisunshin.png" class="landmark-img" />
+      </a>
+      <span>이순신 장군 동상</span>
+    </div>
+    <div class="sidebar-item">
+      <a href="../landmarks/bukchon.html">
+      <img src="../../images/bukchon.png" class="landmark-img" />
+      </a>
+      <span>북촌 한옥 마을</span>
+    </div>
+  </div>
+
+  <!-- 로그인 -->
+  <div class="sidebar-footer">
+    <a href="../login.html">Login</a>
+  </div>
+</div>
+
+
+
+    <!-- 명소 이미지 -->
+    <img src="../../images/gyeongbokgung.png" alt="경복궁" class="landmark-img" />
+
+    <!-- 명소 정보 -->
+    <h2 class="landmark-title">경복궁</h2>
+    <p class="landmark-desc"><strong>경복궁(景福宮)</strong>은 1392년 조선 건국 후 1395년(태조 4)에 창건한 조선왕조 제일의 법궁(法宮)이다.</p>
+    <p class="landmark-desc">경복궁은 북악산(북악산)을 주산으로 넓은 지형에 건물을 배치하였고 정문인 광화문 앞으로 복을 뜻하기에 적절한 한양의 중심이었다. 
+      ‘경복’의 뜻은 ‘큰 복을 누리라’는 의미가 함축되어 있으며, 이곳에서 세 차례 근정전의 왕실 행사가 반복되기도 했다.</p>
+    <p class="landmark-desc">경복궁은 1592년(선조 25) 임진왜란으로 소실되었는데 그 후 복구되지 못하였다가 270여년이 지나 1867년(고종 4)에 다시 지어졌다. 
+      조선 후기에 궁궐과 관련된 전각, 건축물 등이 조성되었으며, 현재 경복궁은 1895년 아관파천으로 일왕행궁과 사대부들의 비운의 공간이기도 하다.</p>
+
+    <!-- 지도 이미지 -->
+    <img src="../../assets/images/gyeongbokgung-map.png" alt="경복궁 지도" class="map-img" />
+
+  </div>
+
+  <script src="../../js/sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>북촌 한옥 마을</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- 상단 바 -->
+<div class="top-bar">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  
+    <div class="top-center">
+      <div class="logo-text">Koring</div>
+    </div>
+  
+    <div class="top-right">
+      <select class="language-select">
+        <option>Language</option>
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+      </select>
+      <button class="camera-btn" onclick="openCamera()">
+        <img src="../../images/camera.png" alt="Camera" />
+      </button>
+    </div>
+  </div>
+  
+<!-- 사이드바 -->
+<div id="sidebar" class="sidebar hidden">
+  <button class="close-btn" onclick="toggleSidebar()">✕</button>
+
+  <!-- 메뉴 아이템 2개씩 -->
+  <div class="sidebar-grid">
+    <div class="sidebar-item">
+      <img src="../../images/home.png" class="menu-icon" />
+      <span>Home</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/reservation.png" class="menu-icon" />
+      <span>Reservation</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/foodai.png" class="menu-icon" />
+      <span>Food AI</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/album.png" class="menu-icon" />
+      <span>Album</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/map.png" class="menu-icon" />
+      <span>Map</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/community.png" class="menu-icon" />
+      <span>Community</span>
+    </div>
+  </div>
+
+  <!-- 명소 항목도 2개씩 -->
+  <div class="sidebar-grid landmark-list">
+    <div class="sidebar-item">
+      <a href="../landmarks/gyeongbokgung.html">
+      <img src="../../images/ogyeongbokgung.png" class="landmark-img" />
+      </a>
+      <span>경복궁</span>
+    </div>
+    <div class="sidebar-item">
+      <a href="../landmarks/namsan.html">
+      <img src="../../images/onamsan.png" class="landmark-img" />
+      </a>
+      <span>남산</span>
+    </div>
+    <div class="sidebar-item">
+      <a href="../landmarks/yisunshin.html">
+      <img src="../../images/oyisunshin.png" class="landmark-img" />
+      </a>
+      <span>이순신 장군 동상</span>
+    </div>
+    <div class="sidebar-item">
+      <a href="../landmarks/bukchon.html">
+      <img src="../../images/obukchon.png" class="landmark-img" />
+      </a>
+      <span>북촌 한옥 마을</span>
+    </div>
+  </div>
+
+  <!-- 로그인 -->
+  <div class="sidebar-footer">
+    <a href="../login.html">Login</a>
+  </div>
+</div>
+
+
+
+
+    <!-- 명소 이미지 -->
+    <img src="../../images/bukchon.png" alt="북촌 한옥 마을" class="landmark-img" />
+
+    <!-- 명소 정보 -->
+    <h2 class="landmark-title">북촌 한옥 마을</h2>
+    <p class="landmark-desc"><strong>북촌 한옥 마을</strong>은 서울의 경복궁과 창덕궁 사이에 자리한 조선 시대 전통 한옥들이 보존된 역사적인 주거 공간이다.</p>
+    <p class="landmark-desc">이곳은 1392년 조선 건국 이후 형성된 당시 상류층의 주거지였던 곳으로 현재까지도 많은 한옥들이 보존되어 전통적인 주거 문화를 보여주고 있다. </p>
+    <p class="landmark-desc">‘한옥 ’이라는 명칭은 개항 이후 서양의 근대 건축 양식이 국내에 유입되면서 기존의 한국 전통 건축 양식과 구별하기 위해 만들어진 신조어이며, 
+        한옥건축역사학회는 한옥을 '한국의 전통적인 목구조 방식을 기본으로 구축된 건축물'로 정의하고 있다. 북촌 한옥마을의 한옥들은 현재도 주민들이 실생활 공간으로 사용하고 있지만, 
+        방문객들도 지역별로 구분하여 이를 관람할 수 있다.</p>
+
+    <!-- 지도 이미지 -->
+    <img src="../../assets/images/bukchon-map.png" alt="북촌 한옥 마을 지도" class="map-img" />
+
+  </div>
+
+  <script src="../../js/sidebar.js"></script>
+</body>
+</html>
