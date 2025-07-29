@@ -1,16 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for,session
-koring = Flask(__name__)
-koring.secret_key = 'your_secret_key'
+from flask import Blueprint, render_template, request, redirect, url_for,session
+from werkzeug.security import generate_password_hash, check_password_hash
 
-users={}
+login_bp = Blueprint('login', __name__)
 
-@koring.route('/')
+users={} #임시저장소, db 연결할 부분
+
+@login_bp.route('/')
 def home():
     if 'email' in session:
         return f"Hello, {session['email']}! <a href='/logout'>Logout</a> "
-    return "Hello, Koring! <a href='/login'>Login</a> or <a href='/register'>Register</a>"\
+    return "Hello, Koring! <a href='/login'>Login</a> or <a href='/register'>Register</a>"
     
-@koring.route('/register', methods=['GET', 'POST'])
+@login_bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         email = request.form['email']
@@ -19,24 +20,25 @@ def register():
         if email in users:
             return "Email already registered. Please use another email."
         
-        users[email] = password
-        return redirect(url_for('login'))
-    
+        users[email] = generate_password_hash(password)
+        return redirect(url_for('login.login'))
     return render_template('register.html')
-@koring.route('/login', methods=['GET', 'POST'])
+
+@login_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
 
-        if email in users and users[email] == password:
+        hashed_password = users.get(email)
+        if hashed_password and check_password_hash(hashed_password, password):
             session['email'] = email
-            return redirect(url_for('home'))
+            return redirect(url_for('login.home'))
         return "Invalid credentials. Please try again."
     return render_template('login.html')
 
-@koring.route('/logout')
+@login_bp.route('/logout')
 def logout():
     session.pop('email', None)
-    return redirect(url_for('home'))
+    return redirect(url_for('login.home'))
       
