@@ -1,9 +1,3 @@
-/**
- * write.js - 글쓰기 페이지 기능 구현
- * 작성자: 나윤서
- * 최종 수정일: 2025-07-27
- */
-
 // 전역 변수 선언
 let uploadedImages = []; // 업로드된 이미지 파일들을 저장할 배열
 
@@ -39,75 +33,75 @@ function setupImageUpload() {
   }
 }
 
-/**
- * 이미지 파일 처리 함수
- */
-function handleImageUpload(files) {
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
+// /**
+//  * 이미지 파일 처리 함수
+//  */
+// function handleImageUpload(files) {
+//   for (let i = 0; i < files.length; i++) {
+//     const file = files[i];
     
-    // 이미지 파일인지 확인
-    if (!file.type.startsWith('image/')) {
-      alert('이미지 파일만 업로드 가능합니다.');
-      continue;
-    }
+//     // // 이미지 파일인지 확인-- 필요한 기능인지 확인 필요
+//     // if (!file.type.startsWith('image/')) {
+//     //   alert('이미지 파일만 업로드 가능합니다.');
+//     //   continue;
+//     // }
     
-    // 파일 크기 제한 (5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      alert('파일 크기는 5MB 이하여야 합니다.');
-      continue;
-    }
+//     // // 파일 크기 제한 (5MB)
+//     // if (file.size > 5 * 1024 * 1024) {
+//     //   alert('파일 크기는 5MB 이하여야 합니다.');
+//     //   continue;
+//     // }
     
-    // 이미지 미리보기 생성 및 표시
-    createImagePreview(file);
+//     // // 이미지 미리보기 생성 및 표시
+//     // createImagePreview(file);
     
-    // 업로드된 이미지 배열에 추가
-    uploadedImages.push(file);
-  }
-}
+//     // // 업로드된 이미지 배열에 추가
+//     // uploadedImages.push(file);
+//   }
+// }
 
-/**
- * 이미지 미리보기 생성 함수
- */
-function createImagePreview(file) {
-  const reader = new FileReader();
+// /**
+//  * 이미지 미리보기 생성 함수
+//  */
+// function createImagePreview(file) {
+//   const reader = new FileReader();
   
-  reader.onload = function(e) {
-    // 이미지 미리보기 컨테이너 생성
-    const previewContainer = document.createElement('div');
-    previewContainer.className = 'image-preview-container';
+//   reader.onload = function(e) {
+//     // 이미지 미리보기 컨테이너 생성
+//     const previewContainer = document.createElement('div');
+//     previewContainer.className = 'image-preview-container';
     
-    // 이미지 요소 생성
-    const img = document.createElement('img');
-    img.src = e.target.result;
-    img.className = 'image-preview';
+//     // 이미지 요소 생성
+//     const img = document.createElement('img');
+//     img.src = e.target.result;
+//     img.className = 'image-preview';
     
-    // 삭제 버튼 생성
-    const deleteBtn = document.createElement('button');
-    deleteBtn.className = 'delete-image-btn';
-    deleteBtn.innerHTML = '✕';
-    deleteBtn.onclick = function() {
-      // 이미지 미리보기 삭제
-      previewContainer.remove();
+//     // 삭제 버튼 생성
+//     const deleteBtn = document.createElement('button');
+//     deleteBtn.className = 'delete-image-btn';
+//     deleteBtn.innerHTML = '✕';
+//     deleteBtn.onclick = function() {
+//       // 이미지 미리보기 삭제
+//       previewContainer.remove();
       
-      // 업로드된 이미지 배열에서도 제거
-      const index = uploadedImages.indexOf(file);
-      if (index > -1) {
-        uploadedImages.splice(index, 1);
-      }
-    };
+//       // 업로드된 이미지 배열에서도 제거
+//       const index = uploadedImages.indexOf(file);
+//       if (index > -1) {
+//         uploadedImages.splice(index, 1);
+//       }
+//     };
     
-    // 컨테이너에 이미지와 삭제 버튼 추가
-    previewContainer.appendChild(img);
-    previewContainer.appendChild(deleteBtn);
+//     // 컨테이너에 이미지와 삭제 버튼 추가
+//     previewContainer.appendChild(img);
+//     previewContainer.appendChild(deleteBtn);
     
-    // 미리보기 영역에 추가
-    const contentEditor = document.querySelector('.content-editor');
-    contentEditor.appendChild(previewContainer);
-  };
+//     // 미리보기 영역에 추가
+//     const contentEditor = document.querySelector('.content-editor');
+//     contentEditor.appendChild(previewContainer);
+//   };
   
-  reader.readAsDataURL(file);
-}
+//   reader.readAsDataURL(file);
+// }
 
 /**
  * 완료 버튼 설정

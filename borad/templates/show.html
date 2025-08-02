@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>글쓰기</title>
-    <link rel="stylesheet" href="../css/show.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/show.css') }}">
+    <script src="{{ url_for('static', filename='js/show.js') }}"></script>
   </head>
   <body>
     <div class="write-post-container">
@@ -23,7 +24,7 @@
       <!-- 이미지 업로드 버튼 -->
       <div class="image-upload-button">
         <label for="imageUpload" class="imageupload-label">
-          <img src="../images/borad_upload.png" alt="이미지 추가 아이콘" />
+          <img src="../static/images/borad_upload.png" alt="이미지 추가 아이콘" />
         </label>
         <input type="file" id="imageUpload" accept="image/*" hidden />
       </div>

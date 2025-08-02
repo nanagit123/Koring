@@ -4,7 +4,7 @@ let comments = [];    // 댓글 목록
 
 /**
  * 페이지 로드 시 실행되는 초기화 함수
- * URL에서 게시글 ID를 추출하고 데이터를 가져옴
+ * URL에서 게시글 ID 추출+ 데이터 가져옴
  */
 function initPage() {
   // URL에서 게시글 ID 가져오기
@@ -71,11 +71,11 @@ function toggleMenu(icon) {
 
 /**
  * 게시글 데이터 가져오기
- * 실제 구현에서는 API 호출로 대체
+ * 백엔드 완성 후 연결하면 수정해야 함
  * @param {string} postId - 게시글 ID
  */
 function fetchPostData(postId) {
-  // 임시 데이터 (실제로는 백엔드 API에서 가져옴)
+  // 임시 데이터 (백엔드 연결 후 수정)
   currentPost = {
     id: postId,
     username: '여행자123',
@@ -89,11 +89,11 @@ function fetchPostData(postId) {
 
 /**
  * 댓글 데이터 가져오기
- * 실제 구현에서는 API 호출로 대체
+ * 백엔드 완성 후 연결하면 수정해야 함
  * @param {string} postId - 게시글 ID
  */
 function fetchComments(postId) {
-  // 임시 데이터 (실제로는 백엔드 API에서 가져옴)
+  // 임시 데이터 (백엔드 연결 후 수정)
   comments = [
     {
       id: '1',
