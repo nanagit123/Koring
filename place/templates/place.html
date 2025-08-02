@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장소추천</title>
+    <link rel="stylesheet" href="../static/css/place.css">
+    <script src="../static/js/place.js"></script>
+</head>
+<body>
+    <h1>맛집 추천</h1>
+    
+   <!-- 사이드바 추후에 코드 추가 -->
+  
+    <!-- 번역 -->
+      <div class="lang-select">
+       <select>
+       <option value="">Language</option>
+       <option value="">한국어</option>
+       <option value="">영어</option>
+       <option value="">일본어</option>
+       <option value="">중국어</option>
+       </select>
+      </div>
+
+        <section class="container">
+        <!-- 연령대 필터 -->
+        <h3>연령대</h3>
+        <div class="filter-group">
+        <button class="filter-btn" data-category="age">10대</button>
+        <button class="filter-btn" data-category="age">20대</button>
+        <button class="filter-btn" data-category="age">30대</button>
+        <button class="filter-btn" data-category="age">40대</button>
+        </div>
+
+        <!-- 국적 필터 -->
+         <h3>국적</h3>
+        <div class="filter-group">
+        <button class="filter-btn" data-category="nationality">한국</button>
+        <button class="filter-btn" data-category="nationality">중국</button>
+        <button class="filter-btn" data-category="nationality">일본</button>
+        <button class="filter-btn" data-category="nationality">미국</button>
+        </div>
+
+    <!-- 음식 종류 필터 -->
+        <h3>음식 종류</h3>
+        <div class="filter-group">
+        <button class="filter-btn" data-category="food">한식</button>
+        <button class="filter-btn" data-category="food">일식</button>
+        <button class="filter-btn" data-category="food">중식</button>
+        <button class="filter-btn" data-category="food">양식</button>
+        <button class="filter-btn" data-category="food">카페</button>
+        <button class="filter-btn" data-category="food">술집</button>
+        </div>
+  </section>
+  
+    <!-- 맛집 추천 버튼 -->
+     <div class="submit-btn">
+      <button onclick="location.href=''">맛집 추천 받기</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #fff;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.lang-select {
+  text-align: right;
+}
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h3 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 1.5px solid #999;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: #6a5acd;
+  color: #6a5acd;
+}
+
+.filter-btn.selected {
+  background-color: #6a5acd; /* 보라색 */
+  color: white;
+  border-color: #6a5acd;
+}
+
+.submit-btn button {
+  display: block;
+  width: 280px;
+  margin: 40px auto 0;
+  padding: 12px 0;
+  border: none;
+  border-radius: 25px;
+  background-color: #ccc; /* 비활성 시 연한 회색 */
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: not-allowed;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn.enabled button {
+  background-color: #6a5acd; /* 활성화 시 진한 보라색 */
+  cursor: pointer;
+}
