@@ -5,11 +5,11 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def home():
-    return render_template('mainpage.html')
+    return render_template('gyeongbokgung.html')
 
 @main_bp.route('/main')
 def main_page():
-    return render_template('mainpage.html')
+    return render_template('gyeongbokgung.html')
 
 @main_bp.route('/integrated')
 def integrated_page():
