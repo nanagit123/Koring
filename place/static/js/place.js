@@ -19,73 +19,57 @@ function changeLanguage(lang) {
 document.addEventListener('DOMContentLoaded', function() {
   // 모든 필터 버튼과 추천 버튼 요소 가져오기
   const filterButtons = document.querySelectorAll('.filter-btn');
-  const submitBtn = document.querySelector('.submit-btn');
+  const submitBtnContainer = document.querySelector('.submit-btn'); // div 요소를 찾음
+  const submitBtn = submitBtnContainer ? submitBtnContainer.querySelector('button') : null; // div 안의 실제 버튼을 찾음
+
+  if (!submitBtn) { // 버튼이 없으면 아무것도 안 함
+    console.error("추천 버튼을 찾을 수 없습니다.");
+    return;
+  }
 
   // 각 필터 버튼에 클릭 이벤트 추가
   filterButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      // 버튼 선택 토글 (보라색으로 변경)
+    button.onclick = function(e) {  // addEventListener 대신 onclick 속성 사용
+      console.log('버튼 클릭됨! - onclick 방식');
+      console.log('클릭 전 클래스:', this.className);
+      e.preventDefault();  // 기본 동작 방지
+      e.stopPropagation(); // 버블링 방지
       this.classList.toggle('selected');
-      
-      // 카테고리별로 선택 관리 (옵션: 각 카테고리당 하나만 선택하게 하려면)
-      // const category = this.getAttribute('data-category');
-      // document.querySelectorAll(`.filter-btn[data-category="${category}"]`).forEach(btn => {
-      //   if (btn !== this) btn.classList.remove('selected');
-      // });
-      
-      // 추천 버튼 활성화 상태 업데이트
+      console.log('클릭 후 클래스:', this.className);
       updateSubmitButton();
-    });
+      return false;  // 이벤트 전파 중지 (추가 안전장치)
+    };
   });
 
   // 추천 버튼 클릭 이벤트
-  submitBtn.addEventListener('click', function() {
-    if (this.classList.contains('enabled')) {
-      // 선택된 모든 태그 수집
-      const selectedTags = {};
-      
-      document.querySelectorAll('.filter-btn.selected').forEach(btn => {
-        const category = btn.getAttribute('data-category');
-        const value = btn.textContent;
+  submitBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const selectedTags = {};
+    document.querySelectorAll('.filter-btn.selected').forEach(btn => {
+      const category = btn.getAttribute('data-category');
+      const value = btn.textContent;
+      if (!selectedTags[category]) {
+        selectedTags[category] = [];
+      }
+      selectedTags[category].push(value);
+    });
         
-        if (!selectedTags[category]) {
-          selectedTags[category] = [];
-        }
-        
-        selectedTags[category].push(value);
-      });
-      
-      // 여기서 백엔드로 데이터 전송 (예: fetch API 사용)
-      console.log('선택된 태그:', selectedTags);
-      
-      // 백엔드 API 호출 예시
-      // fetch('/api/recommend', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(selectedTags)
-      // })
-      // .then(response => response.json())
-      // .then(data => {
-      //   // 추천 결과 처리
-      //   console.log('추천 결과:', data);
-      // })
-      // .catch(error => {
-      //   console.error('추천 요청 실패:', error);
-      // });
-    }
+    console.log('선택된 태그:', selectedTags);
+    window.location.href = ''; // 여기에 실제 이동할 페이지 경로 넣기
   });
 
   // 추천 버튼 상태 업데이트 함수
   function updateSubmitButton() {
-    // 선택된 버튼이 하나라도 있는지 확인
     const hasSelection = document.querySelectorAll('.filter-btn.selected').length > 0;
     
     if (hasSelection) {
-      submitBtn.classList.add('enabled');
+      submitBtnContainer.classList.add('enabled'); // div에 'enabled' 클래스 추가 (CSS 위함)
+      submitBtn.disabled = false; // 실제 버튼 활성화
+      submitBtn.style.cursor = 'pointer'; // 버튼 커서 변경 (CSS로도 가능)
     } else {
-      submitBtn.classList.remove('enabled');
+      submitBtnContainer.classList.remove('enabled'); // div에서 'enabled' 클래스 제거
+      submitBtn.disabled = true; // 실제 버튼 비활성화
+      submitBtn.style.cursor = 'not-allowed'; // 버튼 커서 변경 (CSS로도 가능)
     }
   }
   
