@@ -1,16 +1,17 @@
-// sidebar.js
-
-// 사이드바 토글 함수 (기존과 동일)
+/**
+ * 사이드바 토글 기능
+ * 사이드바를 표시하거나 숨기는 함수
+ */
 function toggleSidebar() {
   const sidebar = document.getElementById('sidebar');
   if (sidebar.classList.contains('hidden')) {
-    sidebar.classList.remove('hidden'); // 보이게
+    sidebar.classList.remove('hidden');
   } else {
-    sidebar.classList.add('hidden'); // 숨기기
+    sidebar.classList.add('hidden');
   }
 }
 
-// ESC 키 누르면 사이드바 닫기 (기존과 동일)
+// ESC 키 누르면 사이드바 닫기
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     const sidebar = document.getElementById('sidebar');
@@ -18,24 +19,23 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-// 사이드바가 아닌 화면 클릭시 사이드바 닫기 (수정 부분)
+/**
+ * 사이드바 외부 영역 클릭 시 사이드바 닫기
+ * 필터 버튼과 제출 버튼 클릭 시에는 사이드바가 닫히지 않도록 예외 처리
+ */
 document.addEventListener('click', function (e) {
   const sidebar = document.getElementById('sidebar');
-  const menuBtn = document.querySelector('.menu-btn'); // 사이드바 여는 버튼 (햄버거 버튼 등)
+  const menuBtn = document.querySelector('.menu-btn');
 
-  // 핵심 수정 부분: 특정 버튼 클릭시 사이드바 닫힘을 무시
-  // 클릭된 요소가 filter-btn 클래스를 가진 요소거나 그 자식 요소이면 필터 버튼을 클릭한 것으로 간주
+  // 필터 버튼이나 제출 버튼 클릭 시 사이드바 닫기 무시
   const isFilterBtnClick = e.target.closest('.filter-btn');
-  // 클릭된 요소가 submit-btn 클래스를 가진 요소거나 그 자식 요소이면 추천 버튼을 클릭한 것으로 간주
   const isSubmitBtnClick = e.target.closest('.submit-btn');
-
-  // 만약 클릭된 요소가 필터 버튼이나 제출 버튼이라면, 사이드바를 닫지 않고 함수 종료
-  // 이렇게 하면 해당 버튼들의 클릭 이벤트는 사이드바 닫기 로직에 영향을 주지 않아요.
+  
   if (isFilterBtnClick || isSubmitBtnClick) { 
     return; 
   }
   
-  // 사이드바 내부를 클릭했거나 메뉴 버튼을 클릭했다면 사이드바를 닫지 않음
+  // 사이드바 내부 또는 메뉴 버튼 클릭 시 사이드바 유지
   const isClickInsideSidebar = sidebar.contains(e.target);
   const isClickOnMenu = menuBtn.contains(e.target);
 
