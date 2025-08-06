@@ -2,14 +2,12 @@
 body {
   font-family: 'Apple SD Gothic Neo', sans-serif;
   background-color: #f0f2f5;
-  margin: 0;
-  padding: 0;
   color: #333;
 }
 
 .back-button {
  margin-top: 20px;
- margin-left: 20px;
+ margin-left: 10px;
   
 }
 .post-view-container {
@@ -80,9 +78,6 @@ body {
       line-height: 1.4;
       word-break: break-word;
     }
-
-
-/* 메뉴 아이콘 */
     .post-menu {
       position: relative;
       display: inline-block;

@@ -1,9 +1,14 @@
 
  body {
-  margin: 0;
   height: 100%;
   font-family: "Noto Sans KR", sans-serif;
   background-color: #fff;
+}
+
+.back-button {
+ margin-top: 50px;
+ margin-left: 10px;
+  
 }
 
 /* 링크 및 포커스 스타일 */

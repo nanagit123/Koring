@@ -1,35 +1,18 @@
-// 게시글 데이터를 저장 배열
+// 게시글 데이터를 저장할 배열
 let posts = []; 
 
-//  사이드바 토글 기능
- 
-function toggleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  sidebar.classList.toggle('hidden');
-}
+// 페이지 로드 시 초기화 함수 실행
+document.addEventListener('DOMContentLoaded', initPage); 
 
-// 게시글 데이터 표시
+// 게시글 데이터 표시 및 이벤트 리스너 설정
 function initPage() {
   fetchPosts();
-  // 사이드바 토글 버튼
-  addSidebarToggleButton();
-  // 언어 선택 이벤트 리스너
   setupLanguageSelector();
 }
 
-// 사이트바 토글 버튼.모바일
-function addSidebarToggleButton() {
-  const body = document.querySelector('body');
-  const button = document.createElement('button');
-  button.className = 'sidebar-toggle';
-  button.innerHTML = '☰';
-  button.onclick = toggleSidebar;
-  body.insertBefore(button, body.firstChild);
-}
-
-// 언어선택 드롭다운 리스트
+// 언어선택 드롭다운 리스너 설정
 function setupLanguageSelector() {
-  const langSelect = document.querySelector('.lang-select select');
+  const langSelect = document.querySelector('.language-select');
   if (langSelect) {
     langSelect.addEventListener('change', function() {
       changeLanguage(this.value);
@@ -37,38 +20,61 @@ function setupLanguageSelector() {
   }
 }
 
-/**언어변경함수
-@param {string} lang 
-*/
- 
+/**
+ * 언어변경 함수
+ * @param {string} lang - 변경할 언어 코드
+ */
 function changeLanguage(lang) {
   console.log(`언어가 ${lang}로 변경되었습니다.`);
-}
-
-// 게시글 데이터 가져오기
-function fetchPosts() {
-  fetch('/api/posts')
-    .then(response => response.json())
-    .then(data => {
-      posts = data;  
-      renderPosts();  
-    })
-    .catch(err => console.error('게시글 불러오기 실패', err));
-}
-
-// 게시글 렌더링 함수
-function renderPosts() {
-  const container = document.querySelector('.container');
-  container.innerHTML = '';
-
-  posts.forEach(post => {
-    const postElement = createPostElement(post);
-    container.appendChild(postElement);
-  });
+  // 추후 다국어 처리 로직 추가
 }
 
 /**
- * 게시글 생성 함수
+ * 게시글 데이터 가져오기
+ */
+async function fetchPosts() {
+  try {
+    const container = document.querySelector('.container');
+    container.innerHTML = '<div class="loading">게시글을 불러오는 중...</div>';
+    
+    //백앤드 연결 전까지는 게시글 불러오기 실패 메세지 뜸
+    const response = await fetch('/api/posts');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    posts = await response.json();
+    renderPosts();
+  } catch (err) {
+    console.error('게시글 불러오기 실패', err);
+    document.querySelector('.container').innerHTML = 
+      '<div class="error">게시글을 불러오는데 실패했습니다. 잠시 후 다시 시도해주세요.</div>';
+  }
+}
+
+/**
+ * 게시글 렌더링 함수
+ */
+function renderPosts() {
+  const container = document.querySelector('.container');
+  const fragment = document.createDocumentFragment();
+
+  if (posts.length === 0) {
+    container.innerHTML = '<div class="no-posts">작성된 게시글이 없습니다.</div>';
+    return;
+  }
+
+  posts.forEach(post => {
+    const postElement = createPostElement(post);
+    fragment.appendChild(postElement);
+  });
+  
+  container.innerHTML = '';
+  container.appendChild(fragment);
+}
+
+/**
+ * 게시글 요소 생성 함수
  * @param {Object} post - 게시글 데이터 객체
  * @return {HTMLElement} 생성된 게시글 요소
  */
@@ -78,14 +84,14 @@ function createPostElement(post) {
   
   postDiv.innerHTML = `
     <div class="profile">
-      <img src="../images/profile.jpg" alt="John" /> 
-      <span class="post-user">${post.username}</span>
+      <img src="../static/images/profile.jpg" alt="User" /> 
+      <span class="post-user">${post.username || '익명 사용자'}</span>
     </div>
-    <a href="index.html?id=${Math.random().toString(36).substr(2, 9)}" class="post-link">
+    <a href="post-detail.html?id=${post.id || generateUniqueId()}" class="post-link">
       <div class="post">
         <div class="meta">
-          <p class="post-content">${post.content}</p>
-          <span class="post-date">${post.date}</span>
+          <p class="post-content">${post.content || '내용 없음'}</p>
+          <span class="post-date">${post.date || new Date().toLocaleDateString()}</span>
         </div>
       </div>
     </a>
@@ -95,11 +101,16 @@ function createPostElement(post) {
 }
 
 /**
+ * 고유 ID 생성 함수
+ * @return {string} 생성된 고유 ID
+ */
+function generateUniqueId() {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+}
+
+/**
  * 글쓰기 페이지로 이동
  */
 function goToWritePage() {
-  window.location.href = 'new.html';
+  window.location.href = 'show.html';
 }
-
-// 페이지 로드 시 초기화 함수 실행
-document.addEventListener('DOMContentLoaded', initPage);
