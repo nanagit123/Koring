@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, request, redirect, url_for,session
 community_bp = Blueprint('community', __name__)
 
 posts = []  # 임시저장소
-commensts = {}  # 댓글 저장소
+comments = {}  # 댓글 저장소
 
 # 커뮤니티 메인 페이지
 @community_bp.route('/community')
@@ -15,7 +15,7 @@ def community_list():
 @community_bp.route('/community/<int:post_id>')
 def community_detail(post_id):
     post = next((p for p in posts if p['id']==post_id), None)
-    post_comments = commensts.get(post_id, [])
+    post_comments = comments.get(post_id, [])
     return render_template('community_detail.html', post=post, comments=post_comments)
 
 # 커뮤니티 글 작성 페이지
@@ -24,7 +24,7 @@ def community_create():
     if request.method == 'POST':
         new_post = {
             'id': len(posts) + 1,
-            'author': session.get('email', 'Anonymous'),
+            'author': session.get('userName', 'Anonymous'),
             'title': request.form['title'],
             'content': request.form['content'],
         }
@@ -36,10 +36,10 @@ def community_create():
 @community_bp.route('/community/<int:post_id>/comment', methods=['POST'])
 def add_comment(post_id):
    comment = {
-        'author': session.get('email', 'Anonymous'),
+        'author': session.get('userName', 'Anonymous'),
         'content': request.form['content']
    }
-   commensts.setdefault(post_id, []).append(comment)
+   comments.setdefault(post_id, []).append(comment)
    return redirect(url_for('community.community_detail', post_id=post_id))
 
 # 커뮤니티 글 삭제
@@ -47,12 +47,12 @@ def add_comment(post_id):
 def delete_post(post_id):
     global posts
     posts = [p for p in posts if p['id'] != post_id]
-    commensts.pop(post_id, None)
+    comments.pop(post_id, None)
     return redirect(url_for('community.community_list'))
 
 # 커뮤니티 댓글 삭제
 @community_bp.route('/community/<int:post_id>/comment/<int:comment_index>/delete',methods=['POST'])
 def delete_comment(post_id, comment_index):
-   if post_id in commensts and 0 <= comment_index < len(commensts[post_id]):
-       del commensts[post_id][comment_index]
+   if post_id in comments and 0 <= comment_index < len(comments[post_id]):
+       del comments[post_id][comment_index]
    return redirect(url_for('community.community_detail', post_id=post_id))

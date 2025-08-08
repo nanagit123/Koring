@@ -2,14 +2,14 @@ from flask import Blueprint, request, jsonify,render_template
 import mysql.connector
 from mysql.connector import Error
 
-restaurant_bp = Blueprint('Restaurant', __name__)
+restaurant_bp = Blueprint('restaurant', __name__)
 
 DB_CONFIG = {
-    'host': 'localhost',
-    'port': 3307,
-    'user': 'test1234',
-    'password': '1234',
-    'database': 'KoringDB',
+    'host': '192.168.219.112',
+    'port':3307,
+    'user': 'apiuser',
+    'password': 'B0Koring!',
+    'database': 'Koring',
     'charset': 'utf8'
 }
 
@@ -56,9 +56,9 @@ def generate_matching_tags(user_input):
       if age in age_mood_mapping:
             mood_tags.update(age_mood_mapping[age])
 
-   for cuisine in user_input.get('cousine', []):
+   for cuisine in user_input.get('cuisine', []):
         if cuisine in cuisine_mood_mapping:
-            mood_tags.update(cuisine_mood_mapping[ccuisine])
+            mood_tags.update(cuisine_mood_mapping[cuisine])
 
    matching_tags['mood'] = list(mood_tags)
 

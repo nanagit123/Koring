@@ -22,6 +22,9 @@ def search_places():
         if not query:
             return jsonify({'success': False, 'message': '검색어를 입력해주세요.'})
 
+        if KAKAO_REST_API_KEY == 'your_kakao_api_key':
+            return jsonify({'success': False, 'message': 'API 키가 설정되지 않았습니다.'})
+        
         url = f'https://dapi.kakao.com/v2/local/search/keyword.json'
         headers = {
             'Authorization': f'KakaoAK {KAKAO_REST_API_KEY}'
@@ -34,12 +37,12 @@ def search_places():
         response = requests.get(url, headers=headers, params=params)
 
         if response.status_code == 200:
-            places = response.json()
-            places = places.get('documents', [])
+            result = response.json()
+            places = result.get('documents', [])
             return jsonify({
-                'success': True,
-                  'places': places,
-                  'total_count': result.get('meta', {}).get('total_count', 0)})
+                 'success': True,
+                 'places': places,
+                 'total_count': result.get('meta', {}).get('total_count', 0)})
         else:
             return jsonify({'success': False,
                 'message': f'검색에 실패했습니다. (상태코드: {response.status_code})'})
@@ -57,6 +60,9 @@ def search_address():
         if not query:
             return jsonify({'success': False, 'message': '주소를 입력해주세요.'})
 
+        if KAKAO_REST_API_KEY == 'your_kakao_api_key':
+            return jsonify({'success': False, 'message': 'API 키가 설정되지 않았습니다.'})
+        
         url = f'https://dapi.kakao.com/v2/local/search/address.json?query={query}'
         headers = {
             'Authorization': f'KakaoAK {KAKAO_REST_API_KEY}'
