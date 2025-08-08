@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이순신 장군 동상</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- 상단 바 -->
+<div class="top-bar">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  
+    <div class="top-center">
+      <div class="logo-text">Koring</div>
+    </div>
+  
+    <div class="top-right">
+      <select class="language-select">
+        <option>Language</option>
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+      </select>
+      <button class="camera-btn" onclick="openCamera()">
+        <img src="../../images/camera.png" alt="Camera" />
+      </button>
+    </div>
+  </div>
+  
+<!-- 사이드바 -->
+<div id="sidebar" class="sidebar hidden">
+  <button class="close-btn" onclick="toggleSidebar()">✕</button>
+
+  <!-- 메뉴 아이템 2개씩 -->
+  <div class="sidebar-grid">
+    <div class="sidebar-item">
+      <img src="../../images/home.png" class="menu-icon" />
+      <span>Home</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/reservation.png" class="menu-icon" />
+      <span>Reservation</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/foodai.png" class="menu-icon" />
+      <span>Food AI</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/album.png" class="menu-icon" />
+      <span>Album</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/map.png" class="menu-icon" />
+      <span>Map</span>
+    </div>
+    <div class="sidebar-item">
+      <img src="../../images/community.png" class="menu-icon" />
+      <span>Community</span>
+    </div>
+  </div>
+
+  <!-- 명소 항목도 2개씩 -->
+  <div class="sidebar-grid landmark-list">
+    <div class="sidebar-item">
+      <a href="../landmarks/gyeongbokgung.html">
+      <img src="../../images/gyeongbokgung.png" class="landmark-img" />
+      </a>
+      <span>경복궁</span>
+    </div>
+    <div class="sidebar-item">
+      <a href="../landmarks/namsan.html">
+      <img src="../../images/namsan.png" class="landmark-img" />
+      </a>
+      <span>남산</span>
+    </div>
+    <div class="sidebar-item">
+      <a href="../landmarks/yisunshin.html">
+      <img src="../../images/yisunshin.png" class="landmark-img" />
+      </a>
+      <span>이순신 장군 동상</span>
+    </div>
+    <div class="sidebar-item">
+      <a href="../landmarks/bukchon.html">
+      <img src="../../images/bukchon.png" class="landmark-img" />
+      </a>
+      <span>북촌 한옥 마을</span>
+    </div>
+  </div>
+
+  <!-- 로그인 -->
+  <div class="sidebar-footer">
+    <a href="../login.html">Login</a>
+  </div>
+</div>
+
+
+
+    <!-- 명소 이미지 -->
+    <img src="../../images/yisunshin.png" alt="이순신 장군 동상" class="landmark-img" />
+
+    <!-- 명소 정보 -->
+    <h2 class="landmark-title">충무공 이순신 장군 동상</h2>
+    <p class="landmark-desc"><strong>충무공 이순신 장군 동상</strong>은 1392년 조선 건국 후 1395년(태조 4)에 창건한 조선왕조 제일의 법궁(法宮)이다.</p>
+    <p class="landmark-desc">충무공 이순신 장군 동상은 서울 광화문 광장에 위치한 임진왜란 영웅 이순신 장군을 기리는 상징적인 조형물이다.</p>
+    <p class="landmark-desc">이 동상은 16세기 말 조선의 장군으로서 임진왜란 및 정유재란 당시 조선 수군을 지휘하며 나라를 지켜낸 이순신 제독의 위업을 기리고 있다. 
+        이 동상은 애국선열 조상건립위원회와 서울신문사의 공동 주관으로 1968년 4월 27일에 건립되었다. 전체 높이 17m의 웅장한 청동 입상 형태로 제작되었으며, 
+        장군의 해상 업적을 상징하는 거북선 모형 1개와 북 2개가 동상 주변에 배치되어 있다. 또한 바다를 지킨 장군의 업적을 기리는 것처럼 동상 근처에 분수대가 설치 되어있다.</p>
+
+    <!-- 지도 이미지 -->
+    <img src="../../assets/images/yisunshin-map.png" alt="이순신 장군 동상 지도" class="map-img" />
+
+  </div>
+
+  <script src="../../js/sidebar.js"></script>
+</body>
+</html>
