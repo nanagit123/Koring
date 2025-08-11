@@ -1,0 +1,101 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #ffffff;
+}
+
+/* 상단바 코드 */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.menu-btn {
+  border: none; 
+  background-color: transparent;
+  font-size: 24px; 
+  cursor: pointer; 
+}
+
+.top-right {
+  display: flex; 
+  align-items: center;
+  gap: 10px; 
+}
+
+.hidden {
+  display: none;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.close-btn {
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+
+}
+
+.sidebar-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sidebar-item img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 6px;
+  object-fit: contain;
+}
+
+.lang-select {
+  text-align: right;
+}
+
+/* 이달의 추천 명소 스크롤 */
+.scroll-container {
+  display: flex;
+  white-space: nowrap;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px;
+}
+
+.scroll-container::-webkit-scrollbar {
+      display: none; 
+}
+
+.scroll-container img {
+  
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+}
