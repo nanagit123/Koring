@@ -1,8 +1,10 @@
+import { recommend } from './api.js';
+
 /**
  * 언어 선택 드롭다운 설정 함수
  */
 function setupLanguageSelector() {
-  const langSelect = document.querySelector('.lang-select select');
+  const langSelect = document.querySelector('.lang-select');
   if (langSelect) {
     langSelect.addEventListener('change', function() {
       changeLanguage(this.value);
@@ -44,25 +46,35 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // 추천 버튼 클릭 이벤트
-  submitBtn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    const selectedTags = {};
+   submitBtn.addEventListener('click', async function(e) {
+  e.stopPropagation();
+  const selectedTags = {};
+  
+  document.querySelectorAll('.filter-btn.selected').forEach(btn => {
+    const category = btn.getAttribute('data-category');
+    const value = btn.textContent;
     
-    document.querySelectorAll('.filter-btn.selected').forEach(btn => {
-      const category = btn.getAttribute('data-category');
-      const value = btn.textContent;
-      
-      if (!selectedTags[category]) {
-        selectedTags[category] = [];
-      }
-      selectedTags[category].push(value);
-    });
-    
-    console.log('선택된 태그:', selectedTags);
-    // 백엔드 연동 시 실제 결과 페이지 경로로 수정 필요
-    window.location.href = '';
+    if (!selectedTags[category]) {
+      selectedTags[category] = [];
+    }
+    selectedTags[category].push(value);
   });
+  
+  try {
+    const result = await recommend(selectedTags);
+    console.log('추천 결과:', result);
 
+    if (result && result.id) {
+      window.location.href = `/restaurant.html?id=${result.id}`;
+    } else {
+      alert('추천 결과가 없습니다.');
+    }
+  } catch (err) {
+    console.error('추천 요청 실패:', err);
+    alert('추천 요청 중 오류가 발생했습니다.');
+  }
+});
+    
   /**
    * 필터 선택 상태에 따라 추천 버튼 활성화/비활성화
    */
