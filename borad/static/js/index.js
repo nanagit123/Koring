@@ -1,3 +1,4 @@
+import { getPosts } from './api.js';
 // 게시글 데이터를 저장할 배열
 let posts = []; 
 
@@ -37,17 +38,11 @@ async function fetchPosts() {
     const container = document.querySelector('.container');
     container.innerHTML = '<div class="loading">게시글을 불러오는 중...</div>';
     
-    //백앤드 연결 전까지는 게시글 불러오기 실패 메세지 뜸
-    const response = await fetch('/api/posts');
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
-    posts = await response.json();
+     posts = await getPosts();  // 여기서 api.js 함수 호출
     renderPosts();
   } catch (err) {
     console.error('게시글 불러오기 실패', err);
-    document.querySelector('.container').innerHTML = 
+    container.innerHTML =
       '<div class="error">게시글을 불러오는데 실패했습니다. 잠시 후 다시 시도해주세요.</div>';
   }
 }
