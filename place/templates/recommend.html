@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>맛집 추천 목록</title>
+  <link rel="stylesheet" href="../static/css/recommend.css">
+  <!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_KAKAO_API_KEY&libraries=services"></script> -->
+</head>
+<body>
+  <!-- 상단바 -->
+  <div class="top-bar">
+    <h1>맛집 추천 목록</h1>
+    <div class="top-right">
+      <select id="language-select" name="language" class="language-select">
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 목록 컨테이너 -->
+  <section class="container">
+    <h3>추천된 맛집</h3>
+    <div id="place-list" class="place-list">
+      <!-- 자바스크립트로 목록 생성 -->
+    </div>
+  </section>
+
+  <script src="../static/js/sidebar.js"></script>
+  <script src="../static/js/recommend.js"></script>
+</body>
+</html>

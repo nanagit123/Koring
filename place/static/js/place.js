@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('추천 결과:', result);
 
     if (result && result.id) {
-      window.location.href = `/restaurant.html?id=${result.id}`;
+      window.location.href = `/recommend.html?id=${result.id}`;
     } else {
       alert('추천 결과가 없습니다.');
     }
