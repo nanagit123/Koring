@@ -81,16 +81,46 @@
     </div>
 
     <!-- 이달의 추천 명소 사진 이후 모바일에서 확인-->
-     <h1 style="text-align: center;">이 달의 추천 명소</h1>
+     <h1 class="mainpage-title">이 달의 추천 명소</h1>
      <div class="scroll-container">
         <img src="../static/images/scrollpic1.jpg" alt="image 1">
         <img src="../static/images/scrollpic2.jpg" alt="image 2">
         <img src="../static/images/scrollpic1.jpg" alt="image 1">
         <img src="../static/images/scrollpic2.jpg" alt="image 2">
      </div>
+     
     <!-- 공지사항(미리보기) -->
-     <h1 style="text-align: center;">공지사항</h1>
+     <div class="title-row">
+      <h1 class="mainpage-title">공지사항</h1>
+       <a href="/notices" class="arrow-link" title="공지사항 전체 보기">➔</a>
+    </div>
+
+     <hr>
+     <div class="notices-container">
+        <ul id="notice-list" style="list-style-type: none;">
+          <li><a href="#">{{notice.title}}</a></li>
+          <li><a href="#">{{notice.title}}</a></li>
+          <li><a href="#">{{notice.title}}</a></li>
+        </ul>
+     </div>
+     <br>
+     <br>
+
      <!-- 커뮤니티(미리보기) -->
+     <div class="title-row">
+      <h1 class="mainpage-title">커뮤니티</h1>
+      <a href="/notices" class="arrow-link" title="공지사항 전체 보기">➔</a>
+    </div>
+     <hr>
+     <div class="borad-container">
+        <ul id="post-list" style="list-style-type: none;">
+          <li><a href="/post/1">{{content}}</a></li>
+          <li><a href="/post/2">{{content}}</a></li>
+          <li><a href="/post/3">{{content}}</a></li>
+        </ul>
+     </div>
     <script src="../static/js/sidebar.js"></script>
+    <script type="module" src="../static/js/mainpage.js"></script>
+    <script type="module" src="../static/js/api.js"></script>
 </body>
 </html>
