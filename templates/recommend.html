@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}맛집 추천 목록{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="../static/css/recommend.css">
+{% endblock %}
+{% block content %}
+<!-- 상단바 -->
+  
+  </div>
+
+  <!-- 목록 컨테이너 -->
+  <section class="container">
+    <h3>추천된 맛집</h3>
+    <div id="place-list" class="place-list">
+      <!-- 자바스크립트로 목록 생성 -->
+    </div>
+  </section>
+{% endblock %}
+{% block extra_js %}
+<script src="../static/js/sidebar.js"></script>
+<script type="module" src="../static/js/recommend.js"></script>
+<script type="module" src="../static/js/api.js"></script>
+{% endblock %}

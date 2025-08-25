@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}체험 예약 | Koring{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/reservation.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="reservation-container">
+
+  <!-- 상단 바 -->
+  
+    </div>
+
+    <div class="top-right">
+      <select class="language-select">
+        <option>Language</option>
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+      </select>
+      <button class="camera-btn" onclick="openCamera()">
+        <img src="{{ url_for('static', filename='images/camera.png') }}" alt="Camera">
+      </button>
+    </div>
+  </div>
+
+  <div class="experience-list">
+    <!-- 경복궁 해설: 외부 링크 -->
+    <a href="https://www.ticketlink.co.kr/product/47930" target="_blank" rel="noopener noreferrer" class="experience-card">
+      <img src="{{ url_for('static', filename='images/gbgGuide.png') }}" alt="경복궁 해설">
+      <div class="experience-info">
+        <span>경복궁 해설</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+
+    <!-- 창덕궁 달빛기행: 외부 링크 -->
+    <a href="https://www.ticketlink.co.kr/product/55297" target="_blank" rel="noopener noreferrer" class="experience-card">
+      <img src="{{ url_for('static', filename='images/changdeokgung.png') }}" alt="창덕궁 달빛기행">
+      <div class="experience-info">
+        <span>창덕궁 달빛기행</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+{% endblock %}

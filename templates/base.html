@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block title %}Koring{% endblock %}</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body class="{% if request.endpoint in ['login', 'signup'] %}auth{% endif %}">
+
+{% set AUTH = ['login','signup'] %}
+{% set auth_page = request.endpoint in AUTH %}
+{% set dev = request.args.get('dev') == '1' %}
+{% set dev_q = 1 if dev else none %}
+
+{# 로그인/회원가입이면 항상 숨김 #}
+{% set show_chrome = not auth_page %}
+
+{% if show_chrome %}
+
+  <!-- 상단바 -->
+  <header class="top-bar" role="banner">
+    <div class="left">
+      <button id="sidebarToggle" class="menu-btn" aria-controls="globalSidebar" aria-expanded="false" aria-label="사이드바 열기/닫기">☰</button>
+    </div>
+
+    <div class="center">
+      <a href="{{ url_for('mainpage', dev=dev_q) }}" class="logo-link" aria-label="홈으로 이동">
+        <div class="logo-text">Koring</div>
+      </a>
+    </div>
+
+    <div class="right">
+      <form action="{{ url_for('mainpage', dev=dev_q) }}" method="GET" class="lang-form" aria-label="언어 선택">
+        <select name="lang" class="language-select" aria-label="언어 선택">
+          <option value="ko" {% if request.args.get('lang','ko')=='ko' %}selected{% endif %}>Language</option>
+          <option value="en" {% if request.args.get('lang')=='en' %}selected{% endif %}>English</option>
+          <option value="ja" {% if request.args.get('lang')=='ja' %}selected{% endif %}>日本語</option>
+          <option value="zh" {% if request.args.get('lang')=='zh' %}selected{% endif %}>中文</option>
+          <option value="fr" {% if request.args.get('lang')=='fr' %}selected{% endif %}>Français</option>
+        </select>
+        {% if dev %}<input type="hidden" name="dev" value="1">{% endif %}
+      </form>
+
+      <a class="icon-btn camera-btn" href="{{ url_for('camera', dev=dev_q) }}" aria-label="카메라 페이지로 이동">
+        <img src="{{ url_for('static', filename='images/camera.png') }}" alt="카메라 아이콘"style="width:20px; height:20px;" />
+      </a>
+
+    </div>
+  </header>
+
+  <!-- 오버레이 -->
+  <div id="sidebarOverlay" class="sidebar-overlay" tabindex="-1" hidden></div>
+
+  <!-- 이미지 아이콘 타일 사이드바 -->
+  <aside id="globalSidebar" class="sidebar sidebar-modern" aria-label="전역 내비게이션" hidden>
+    <div class="sidebar-header">
+      <div class="sidebar-title">메뉴</div>
+      <button id="sidebarClose" class="sidebar-close" aria-label="사이드바 닫기">×</button>
+    </div>
+
+    <!-- 상단 아이콘 타일 -->
+    <nav class="sidebar-tiles" role="navigation">
+      <a class="tile" href="{{ url_for('mainpage', dev=dev_q) }}">
+        <span class="tile-icon">
+          <img src="{{ url_for('static', filename='images/home.png') }}" alt="Home">
+        </span>
+        <span class="tile-label">Home</span>
+      </a>
+
+      <a class="tile" href="{{ url_for('reservation', dev=dev_q) }}">
+        <span class="tile-icon">
+          <img src="{{ url_for('static', filename='images/reservation.png') }}" alt="Reservation">
+        </span>
+        <span class="tile-label">Reservation</span>
+      </a>
+
+      <a class="tile" href="{{ url_for('album', dev=dev_q) }}">
+        <span class="tile-icon">
+          <img src="{{ url_for('static', filename='images/album.png') }}" alt="Album">
+        </span>
+        <span class="tile-label">Album</span>
+      </a>
+
+      <a class="tile" href="{{ url_for('index', dev=dev_q) }}">
+        <span class="tile-icon">
+          <img src="{{ url_for('static', filename='images/community.png') }}" alt="Community">
+        </span>
+        <span class="tile-label">Community</span>
+      </a>
+
+      {# Place(선호도) #}
+      {% if has_endpoint('place') %}
+        <a class="tile" href="{{ url_for('place', dev=dev_q) }}">
+          <span class="tile-icon">
+            <img src="{{ url_for('static', filename='images/foodai.png') }}" alt="Place">
+          </span>
+          <span class="tile-label">Place</span>
+        </a>
+      {% else %}
+        <a class="tile disabled" href="#" aria-disabled="true" title="준비 중">
+          <span class="tile-icon">
+            <img src="{{ url_for('static', filename='images/foodai.png') }}" alt="Place">
+          </span>
+          <span class="tile-label">Place</span>
+        </a>
+      {% endif %}
+
+      {# Map(길찾기) #}
+      {% if has_endpoint('map') %}
+        <a class="tile" href="{{ url_for('map', dev=dev_q) }}">
+          <span class="tile-icon">
+            <img src="{{ url_for('static', filename='images/map.png') }}" alt="Map">
+          </span>
+          <span class="tile-label">Map</span>
+        </a>
+      {% else %}
+        <a class="tile disabled" href="#" aria-disabled="true" title="준비 중">
+          <span class="tile-icon">
+            <img src="{{ url_for('static', filename='images/map.png') }}" alt="Map">
+          </span>
+          <span class="tile-label">Map</span>
+        </a>
+      {% endif %}
+    </nav>
+
+    <!-- 명소 숏컷 (원형 썸네일) -->
+    <section class="sidebar-shortcuts" aria-label="명소 바로가기">
+      <div class="sc-grid">
+        <a class="sc-item" href="{{ url_for('gyeongbokgung', dev=dev_q) }}">
+          <img src="{{ url_for('static', filename='images/gyeongbokgung.png') }}" alt="경복궁">
+          <span>경복궁</span>
+        </a>
+        <a class="sc-item" href="{{ url_for('namsan', dev=dev_q) }}">
+          <img src="{{ url_for('static', filename='images/namsan.png') }}" alt="남산">
+          <span>남산</span>
+        </a>
+        <a class="sc-item" href="{{ url_for('yisunshin', dev=dev_q) }}">
+          <img src="{{ url_for('static', filename='images/yisunshin.png') }}" alt="이순신">
+          <span>이순신 장군 동상</span>
+        </a>
+        <a class="sc-item" href="{{ url_for('bukchon', dev=dev_q) }}">
+          <img src="{{ url_for('static', filename='images/bukchon.png') }}" alt="북촌 한옥 마을">
+          <span>북촌 한옥 마을</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="sidebar-footer">
+      <a class="sidebar-login" href="{{ url_for('login', dev=dev_q) }}">Login</a>
+    </footer>
+  </aside>
+
+{% endif %}
+
+  <main id="content" class="page-content" role="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2025 Koring Project</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

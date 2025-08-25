@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}이순신 장군 동상{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/landmark.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <article class="lm-article">
+
+    <!-- 명소 이미지 -->
+    <img src="{{ url_for('static', filename='images/yisunshin.png') }}"
+         alt="이순신 장군 동상"
+         class="landmark-img lm-hero" />
+
+    <!-- 제목 -->
+    <h1 class="landmark-title lm-title">이순신 장군 동상</h1>
+
+    <!-- 리드문 -->
+    <p class="landmark-desc lm-lead">
+      <strong>충무공 이순신 장군 동상</strong>은 서울 광화문 광장에 위치한 임진왜란 영웅 이순신 장군을 기리는 상징적인 조형물이다.
+    </p>
+
+    <!-- 본문 -->
+    <div class="lm-body">
+      <p class="landmark-desc">
+        이 동상은 16세기 말 조선의 장군으로서 임진왜란 및 정유재란 당시 조선 수군을 지휘하며 나라를 지켜낸 이순신 제독의 위업을 기리고 있다.
+      </p>
+      <p class="landmark-desc">
+        애국선열 조상건립위원회와 서울신문사의 공동 주관으로 1968년 4월 27일에 건립되었으며,
+        전체 높이 17m의 청동 입상이다. 동상 주변에는 거북선 모형과 북 2개, 분수대가 설치되어 장군의 해상 전공을 상징한다.
+      </p>
+    </div>
+
+    <!-- 지도 -->
+    <div class="lm-map-card">
+      <img src="{{ url_for('static', filename='images/yisunshin-map.png') }}"
+           alt="이순신 장군 동상 지도"
+           class="map-img" />
+    </div>
+
+    <!-- (선택) 지도 링크 -->
+    <a class="lm-map-link" href="https://maps.google.com/?q={{ '이순신 장군 동상' | urlencode }}" target="_blank" rel="noopener">
+      이순신 장군 동상 지도
+    </a>
+
+  </article>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+{% endblock %}

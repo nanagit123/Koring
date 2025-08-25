@@ -1,0 +1,22 @@
+/* auto-refactored: import shared base */
+@import url('base.css');
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.button-group {
+  margin: 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#captured-image {
+  margin-top: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}

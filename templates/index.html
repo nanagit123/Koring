@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}게시글 미리보기{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+  <!-- 게시글 목록 -->
+  <div class="container">
+
+    {% for p in posts | default([], true) %}
+    <article class="preview-post" role="listitem">
+      <div class="profile">
+        <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="프로필" />
+        <span class="post-user">{{ p.username | default('익명') }}</span>
+      </div>
+
+      <a class="post-link" href="{{ p.url | default('#') }}">
+        <div class="post">
+          <div class="meta">
+            <p class="post-content">{{ p.content | default('내용이 없습니다.') }}</p>
+            <span class="post-date">{{ p.date | default('방금 전') }}</span>
+          </div>
+        </div>
+      </a>
+    </article>
+    {% else %}
+    <article class="preview-post empty" role="note">
+      <div class="profile">
+        <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="프로필" />
+        <span class="post-user">시스템</span>
+      </div>
+      <div class="post">
+        <div class="meta">
+          <p class="post-content">첫 글을 작성해 보세요!</p>
+          <span class="post-date">지금</span>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+
+  </div>
+
+  <!-- 게시글 작성 페이지 이동 -->
+  <div class="write-button" style="margin-top:16px">
+    <!-- dev 파라미터가 있으면 그대로 유지됨(None이면 자동 생략) -->
+    <a class="btn" href="{{ url_for('post_new', dev=request.args.get('dev')) }}">글쓰기</a>
+  </div>
+
+  {# 만약 하단 고정액션을 쓰고 싶으면 위 write-button 대신 아래 블록 사용
+  <div class="bottom-action">
+    <a class="btn" href="{{ url_for('post_new', dev=request.args.get('dev')) }}">글쓰기</a>
+  </div>
+  #}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script src="{{ url_for('static', filename='js/sidebar.js') }}"></script>
+{% endblock %}

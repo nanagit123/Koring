@@ -1,0 +1,89 @@
+/* ===============================
+   landmark.css (랜드마크 상세 전용)
+   =============================== */
+
+/* 본문 폭 & 중앙 정렬 */
+.lm-article { 
+  max-width: 720px; 
+  margin: 0 auto; 
+  padding: 0 16px;           /* 모바일 좌우 여백 */
+}
+
+/* 히어로 이미지: 모델처럼 테두리 제거 + 은은한 그림자 */
+.page-content .hero-image,
+.lm-hero{
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  border: 0;                 /* ← 모델처럼 테두리 없음 */
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  margin: 14px 0 22px;       /* 살짝 넓은 하단 여백 */
+}
+
+/* 제목: 중앙/두껍게/간격 */
+.page-content h1,
+.page-title,
+.lm-title{
+  text-align: center;
+  font-weight: 800;
+  font-size: 26px;           
+  line-height: 1.3;
+  margin: 10px 0 12px;
+  letter-spacing: -.2px;
+}
+
+/* 리드문(요약): 모델처럼 더 굵고 크게 */
+.page-content .lead,
+.lm-lead{
+  text-align: center;
+  font-weight:500;
+  font-size: 13px;         
+  line-height: 1.7;
+  margin: 6px auto 18px;
+  max-width: 680px;          /* 폭 제한으로 읽기 좋게 */
+}
+
+/* 본문 단락(가독성) */
+.lm-body p{
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 0 0 14px;
+  letter-spacing: -.1px;
+}
+
+/* 지도 카드: 둥근 모서리 + 경계선 + 그림자 */
+.map-img,
+.lm-map-card{
+  border-radius: 12px;
+  border: 1px solid var(--kb-border);
+  background: #fff;
+  box-shadow: var(--kb-shadow);
+  overflow: hidden;
+  margin-top: 16px;
+}
+.lm-map-card img,
+.lm-map-card iframe{
+  display: block;
+  width: 100%;
+  height: 260px;             /* 필요 시 240~300 조절 */
+  border: 0;
+}
+
+/* 지도 링크: 필 형태 버튼 */
+.lm-map-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border: 1px solid var(--kb-border);
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 600;
+}
+
+/* — 모바일과 데스크톱 미세 보정 — */
+@media (min-width: 768px){
+  .lm-article { padding: 0; }     /* 데스크톱에서는 좌우 여백 줄임 */
+  .lm-lead    { font-size: 20px; } /* 큰 화면에서 리드 조금 더 큼 */
+}

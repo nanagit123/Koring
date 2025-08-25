@@ -1,0 +1,132 @@
+/* auto-refactored: import shared base */
+@import url('base.css');
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.top-bar {
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.menu-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.language-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.sidebar {
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.close-btn {
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.sidebar-item {
+  cursor: pointer;
+}
+
+.sidebar-item img {
+  margin-bottom: 6px;
+}
+
+.lang-select {
+  text-align: right;
+}
+
+.container {
+  padding: 20px 16px 80px;
+  max-width: 480px;
+}
+
+h3 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 1.5px solid #999;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: #6a5acd;
+  color: #6a5acd;
+}
+
+.filter-btn.selected {
+  background-color: #6a5acd;
+  color: white;
+  border-color: #6a5acd;
+}
+
+.submit-btn button {
+  display: block;
+  width: 280px;
+  margin: 40px auto 0;
+  padding: 12px 0;
+  border: none;
+  border-radius: 25px;
+  background-color: #ccc;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: not-allowed;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn.enabled button {
+  background-color: #6a5acd;
+  cursor: pointer;
+}

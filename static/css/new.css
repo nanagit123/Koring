@@ -1,0 +1,128 @@
+/* auto-refactored: import shared base */
+@import url('base.css');
+
+body {
+  height: 100%;
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #fff;
+}
+
+.back-button {
+  margin-top: 50px;
+  margin-left: 10px;
+}
+
+button:focus-visible {
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+
+:root {
+  --collection-1-background-default: rgba(236, 235, 235, 0.73);
+  --collection-1-brand-primary: rgba(85, 87, 144, 1);
+  --collection-1-text: rgba(69, 67, 108, 1);
+  --collection-1-color-2: rgba(255, 255, 255, 1);
+  --collection-1-heart: rgba(184, 38, 71, 1);
+  --system-colors-labels-primary: rgba(0, 0, 0, 1);
+  --system-colors-backgrounds-primary: rgba(255, 255, 255, 1);
+}
+
+[data-system-colors-mode="dark"],
+[data-system-colors-mode="IC-dark"],
+[data-system-colors-mode="dark-elevated"],
+[data-system-colors-mode="IC-dark-elevated"] {
+  --system-colors-labels-primary: rgba(255, 255, 255, 1);
+  --system-colors-backgrounds-primary: rgba(0, 0, 0, 1);
+}
+
+[data-system-colors-mode="dark-elevated"] {
+  --system-colors-backgrounds-primary: rgba(28, 28, 30, 1);
+}
+
+[data-system-colors-mode="IC-dark-elevated"] {
+  --system-colors-backgrounds-primary: rgba(36, 36, 38, 1);
+}
+
+.write-post-container {
+  padding: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #fff;
+}
+
+.write-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.write-post-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+}
+
+.submit-button {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: calc(100% - 32px);
+  max-width: 480px;
+  text-align: center;
+}
+
+.submit-button button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #5c519b;
+  color: white;
+  font-size: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.submit-button button:hover {
+  background-color: #443b87;
+}
+
+.image-upload-section {
+  margin: 16px 0;
+}
+
+.image-upload-label {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.image-upload-label img {
+  width: 24px;
+  height: 24px;
+}
+
+.content-editor {
+  margin-bottom: 20px;
+}
+
+.post-textarea {
+  width: 100%;
+  height: 300px;
+  resize: none;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: var(--collection-1-background-default);
+}
+
+.home-indicator {
+  width: 100px;
+  height: 5px;
+  background-color: #ccc;
+  border-radius: 10px;
+  margin: 16px auto 0;
+}

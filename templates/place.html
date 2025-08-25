@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}장소추천{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="../static/css/place.css">
+{% endblock %}
+{% block content %}
+
+</div>
+        <section class="container">
+        <!-- 연령대 필터 -->
+        <h3>연령대</h3>
+        <div class="filter-group">
+        <button class="filter-btn" data-category="age">10대</button>
+        <button class="filter-btn" data-category="age">20대</button>
+        <button class="filter-btn" data-category="age">30대</button>
+        <button class="filter-btn" data-category="age">40대</button>
+        </div>
+
+        <!-- 국적 필터 -->
+         <h3>국적</h3>
+        <div class="filter-group">
+        <button class="filter-btn" data-category="nationality">한국</button>
+        <button class="filter-btn" data-category="nationality">중국</button>
+        <button class="filter-btn" data-category="nationality">일본</button>
+        <button class="filter-btn" data-category="nationality">미국</button>
+        </div>
+
+    <!-- 음식 종류 필터 -->
+        <h3>음식 종류</h3>
+        <div class="filter-group">
+        <button class="filter-btn" data-category="food">한식</button>
+        <button class="filter-btn" data-category="food">일식</button>
+        <button class="filter-btn" data-category="food">중식</button>
+        <button class="filter-btn" data-category="food">양식</button>
+        <button class="filter-btn" data-category="food">카페</button>
+        <button class="filter-btn" data-category="food">술집</button>
+        </div>
+  </section>
+  
+    <!-- 맛집 추천 버튼 -->
+     <div class="submit-btn">
+      <button onclick="location.href=''">맛집 추천 받기</button>
+    </div>
+{% endblock %}
+{% block extra_js %}
+<script src="../static/js/place.js"></script>
+<script type="module" src="../static/js/api.js" ></script>
+<script type="module" src="../static/js/place.js" ></script>
+<script src="../static/js/sidebar.js"></script>
+{% endblock %}

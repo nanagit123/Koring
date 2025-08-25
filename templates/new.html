@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}글쓰기{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/new.css') }}">
+{% endblock %}
+
+{% block content %}
+  <!-- 뒤로가기 -->
+  <a href="{{ url_for('index', dev=request.args.get('dev')) }}" class="back-button" aria-label="목록으로">
+    <img src="{{ url_for('static', filename='images/back.png') }}" alt="뒤로가기 아이콘">
+  </a>
+
+  <div class="write-post-container">
+    <h1 class="page-title">새 글 작성</h1>
+
+    <!-- 새 글 폼: post_new 라우트로 전송 -->
+    <form method="POST"
+          action="{{ url_for('post_new', dev=request.args.get('dev')) }}"
+          enctype="multipart/form-data">
+
+      <!-- 제목 -->
+      <div class="input-box">
+        <label for="title">제목</label>
+        <input id="title" name="title" type="text" placeholder="제목을 입력하세요" required>
+      </div>
+
+      <!-- 본문 -->
+      <main class="content-editor">
+        <label for="body" class="sr-only">내용</label>
+        <textarea id="body"
+                  name="body"
+                  class="post-textarea"
+                  placeholder="내용을 작성해주세요."
+                  required></textarea>
+      </main>
+
+      <!-- 이미지 업로드 (여러 장 가능) -->
+      <div class="image-upload-button">
+        <label for="imageUpload" class="imageupload-label">
+          {# 파일명이 'borad_upload.png' / 'board_upload.png' 중 실제 파일에 맞춰 두세요 #}
+          <img src="{{ url_for('static', filename='images/borad_upload.png') }}" alt="이미지 추가 아이콘">
+        </label>
+        <input type="file" id="imageUpload" name="images" accept="image/*" multiple hidden>
+      </div>
+
+      <!-- 등록 버튼 (하단 고정 디자인 사용) -->
+      <div class="bottom-action">
+        <button class="btn" type="submit">등록</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/new.js') }}"></script>
+{% endblock %}

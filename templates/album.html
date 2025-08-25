@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}앨범 | Koring{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/album.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="album-container">
+  {% for photo in photos %}
+  <div class="polaroid">
+    <img src="{{ photo.url }}" alt="사진">
+    <div class="caption">
+      <p>{{ photo.date }}</p>
+      <p>{{ photo.location }}</p>
+    </div>
+  </div>
+  {% endfor %}
+  
+  <!-- ✅ 플러스 추가 카드 -->
+  <div class="polaroid add-photo">
+    <a href="{{ url_for('camera') }}" class="plus-wrapper">
+      <span class="plus-icon">+</span>
+    </a>
+  </div>
+</div>
+
+<!-- 하단 고정 카메라 버튼 -->
+<a href="{{ url_for('camera') }}" class="camera-button">
+  <img src="{{ url_for('static', filename='images/camera.png') }}" alt="카메라">
+</a>
+{% endblock %}

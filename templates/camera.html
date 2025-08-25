@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}카메라 | Koring{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/camera.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>
+    <img src="{{ url_for('static', filename='images/camera.png') }}" 
+         alt="카메라 아이콘" 
+         style="width: 24px; vertical-align: middle; margin-right: 8px;">
+    카메라 기능
+  </h2>
+
+  <!-- 미리보기 -->
+  <video id="preview" autoplay playsinline style="width: 100%; max-width: 480px;"></video>
+
+  <!-- 버튼 그룹 -->
+  <div class="button-group">
+    <button onclick="capturePhoto()">📸 Capture</button>
+    <button onclick="applyFilter()">🎨 Filter</button>
+    <button onclick="insertDate()">📅 Date</button>
+    <button onclick="shareToSNS()">📤 Share</button>
+    <button onclick="translateText()">🔠 Translate</button>
+  </div>
+
+  <!-- 캡처 결과 -->
+  <canvas id="canvas" style="display: none;"></canvas>
+  <div id="result">
+    <img id="captured-image" src="" alt="미리보기" style="width: 100%; max-width: 480px;">
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+{% endblock %}

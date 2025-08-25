@@ -1,0 +1,89 @@
+/* auto-refactored: import shared base */
+@import url('base.css');
+
+.landmark-img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.landmark-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.landmark-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.sidebar-grid.landmark-list .sidebar-item img {
+  width: 60px;
+  height: 60px;
+}
+
+.reservation-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.reservation-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.experience-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-3px);
+}
+
+.experience-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  filter: brightness(60%);
+  transition: filter 0.3s ease;
+}
+
+.experience-card:hover img {
+  filter: brightness(75%);
+}
+
+.experience-info {
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.arrow {
+  font-size: 18px;
+}

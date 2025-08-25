@@ -1,0 +1,83 @@
+/* auto-refactored: import shared base */
+@import url('base.css');
+
+.album-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  justify-items: center;
+}
+
+.polaroid {
+  width: 160px;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid var(--kb-border);
+  box-shadow: var(--kb-shadow);
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* 사진 카드 이미지 */
+.polaroid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.caption p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: var(--kb-text);
+}
+
+/* ✅ 플러스 카드: 동일 프레임 + 텍스트 '+' 정가운데 */
+.polaroid.add-photo {
+  height: 260px;               /* 사진 카드와 동일한 시각 높이 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.polaroid.add-photo .plus-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.polaroid.add-photo .plus-icon {
+  font-size: 60px;            /* +만 크게 (원하면 100~140px 조절) */
+  font-weight: 400;
+  color: var(--kb-primary);
+  line-height: 1;
+  user-select: none;           /* 드래그 방지 */
+  transform: translateY(-2px); /* 시각 중심 보정(선택) */
+  transition: transform .15s ease;
+}
+
+.polaroid.add-photo:hover .plus-icon {
+  transform: translateY(-2px) scale(1.06);
+}
+
+/* 하단 고정 카메라 버튼 */
+.camera-button {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 9999px;
+  padding: 15px;
+  box-shadow: var(--kb-shadow);
+  border: 1px solid var(--kb-border);
+  z-index: 1050;
+}
+.camera-button img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
