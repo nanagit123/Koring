@@ -361,3 +361,13 @@ body.auth .sidebar-overlay{ display:none !important; }
 @media (min-width: 768px){
   .top-bar, .page-content, .site-footer { border-left:none !important; border-right:none !important; }
 }
+
+/* base.css 맨 아래에 추가 (모든 페이지 공통) */
+.top-bar .logo-text{
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: .3px;
+  color: var(--kb-brand);
+  line-height: 1;
+  font-synthesis-weight: none; /* 모바일에서 굵기 유사화 방지 */
+}

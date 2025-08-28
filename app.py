@@ -210,6 +210,13 @@ def upload_image():
     return jsonify({"url": image_url}), 200
 
 # =========================
+# 공지사항
+# =========================
+@app.route("/notice")
+def notice():
+    return render_template("notice.html")
+
+# =========================
 # 실행
 # =========================
 if __name__ == '__main__':
@@ -218,3 +225,10 @@ if __name__ == '__main__':
     for rule in app.url_map.iter_rules():
         print(f"{rule} -> {rule.endpoint}")
     app.run(debug=True)
+
+# app.py
+app.config.update(
+    TEMPLATES_AUTO_RELOAD=True,
+    SEND_FILE_MAX_AGE_DEFAULT=0,   # static 캐시 비활성화
+)
+app.jinja_env.cache = {}           # 템플릿 캐시 비우기

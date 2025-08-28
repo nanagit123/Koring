@@ -1,22 +1,46 @@
-/* auto-refactored: import shared base */
 @import url('base.css');
 
-h2 {
-  font-size: 24px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
+/* 상단바 바로 밑에 붙도록 여백 최소화 */
+.camera-page { padding-top: 8px; padding-bottom: 24px; }
+.camera-title { margin: 6px 0 10px; }  /* h2 기본 상단 마진 줄이기 */
+
+/* 라이브 영상 크게 */
+.camera-stage{
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--kb-border);
+  box-shadow: var(--kb-shadow);
 }
 
-.button-group {
-  margin: 16px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+/* 비디오를 화면 폭에 맞춰 크게 (세로형 비율 보정) */
+.camera-stage video{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;          /* 필요시 16/9로 변경 가능 */
+  background: #000;             /* 카메라 준비 전 검정 배경 */
+  display: block;
 }
 
-#captured-image {
-  margin-top: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+/* 미리보기 썸네일: 좌상단에 작게 떠 있게 */
+.preview-thumb{
+  position: absolute;
+  top: 10px; left: 10px;
+  width: 110px;                 /* 썸네일 크기 (원하면 90~140px 조절) */
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--kb-border);
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  background: #fff;
+  object-fit: cover;            /* canvas면 무시됨, img면 적용 */
+  display: none;                /* 캡처 전에는 숨김 */
+}
+.preview-thumb.show { display: block; }
+
+/* 하단 고정 버튼 그룹 (base.css의 .bottom-action 안) */
+.camera-actions{
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(120px, 1fr) );
+  gap: 8px;
 }

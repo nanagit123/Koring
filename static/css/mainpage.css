@@ -1,16 +1,6 @@
 /* auto-refactored: import shared base */
 @import url('base.css');
 
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #ffffff;
-}
-
-.top-bar {
-  width: 100%;
-  padding: 10px 20px;
-  box-sizing: border-box;
-}
 
 .menu-btn {
   border: none;

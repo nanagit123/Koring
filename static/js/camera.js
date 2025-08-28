@@ -16,28 +16,54 @@ window.onload = function () {
         });
 };
 
-function capturePhoto() {
+// ✅ 공통: 현재 프레임을 캔버스에 그려서 dataURL 반환
+function drawFrameToCanvas() {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL("image/png");
+}
 
-    const image = canvas.toDataURL("image/png");
-    document.getElementById("captured-image").src = image;
-    document.getElementById("result").style.display = "block";
+function showPreview(dataURL) {
+    const img = document.getElementById("captured-image");
+    img.src = dataURL;
+    img.classList.add("show");     // CSS .preview-thumb.show { display:block; }
+}
+
+function capturePhoto() {
+    // 필터 없이 기본 캡처
+    ctx.filter = 'none';
+    const dataURL = drawFrameToCanvas();
+    showPreview(dataURL);
 }
 
 function applyFilter() {
+    // 그레이스케일 필터 적용 → 캡처 → 필터 초기화
     ctx.filter = 'grayscale(100%)';
-    capturePhoto();
+    const dataURL = drawFrameToCanvas();
+    showPreview(dataURL);
+    ctx.filter = 'none';
 }
 
 function insertDate() {
+    // 현재 프레임을 먼저 그리고 날짜 오버레이한 뒤 미리보기 업데이트
+    ctx.filter = 'none';
+    drawFrameToCanvas();
+
     const date = new Date().toLocaleDateString();
     ctx.font = "30px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText(date, 20, canvas.height - 40);
-    const image = canvas.toDataURL("image/png");
-    document.getElementById("captured-image").src = image;
+    ctx.strokeStyle = "rgba(0,0,0,.6)";
+    ctx.lineWidth = 4;
+
+    // 가독성을 위해 테두리 + 채움
+    const x = 20;
+    const y = canvas.height - 40;
+    ctx.strokeText(date, x, y);
+    ctx.fillText(date, x, y);
+
+    const dataURL = canvas.toDataURL("image/png");
+    showPreview(dataURL);
 }
 
 async function shareToSNS() {

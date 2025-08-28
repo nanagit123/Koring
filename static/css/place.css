@@ -1,23 +1,10 @@
 /* auto-refactored: import shared base */
 @import url('base.css');
 
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #fff;
-  color: #333;
-  padding: 20px;
-}
-
 h1 {
   text-align: center;
   margin-bottom: 30px;
   font-weight: 700;
-}
-
-.top-bar {
-  width: 100%;
-  padding: 10px 20px;
-  box-sizing: border-box;
 }
 
 .menu-btn {

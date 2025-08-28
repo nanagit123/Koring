@@ -1,0 +1,25 @@
+@import url('base.css');
+
+/* 상단바: 기존 flex 유지, 색/패딩만 살짝 */
+.page-notice .top-bar { padding: 10px 16px; }
+
+/* 뒤로가기 버튼 */
+.page-notice .back-btn{
+  font-size: 20px;
+  text-decoration: none;
+  padding-left: 8px;
+  color: var(--kb-text);
+}
+
+/* 중앙 로고/타이틀 색상만 보정 */
+.page-notice .logo-text{
+  font-size: 22px;
+  font-weight: 700;
+  color: #A374DB;
+}
+
+/* 본문 */
+.notice-page { padding: 16px; }
+.page-title  { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+.notice-date { font-size: 14px; color: var(--kb-muted); margin-bottom: 16px; }
+.notice-body p { font-size: 15px; line-height: 1.6; color: var(--kb-text); }

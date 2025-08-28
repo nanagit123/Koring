@@ -7,30 +7,31 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-  <h2>
-    <img src="{{ url_for('static', filename='images/camera.png') }}" 
-         alt="카메라 아이콘" 
-         style="width: 24px; vertical-align: middle; margin-right: 8px;">
-    카메라 기능
-  </h2>
+<div class="container camera-page">
+  
 
-  <!-- 미리보기 -->
-  <video id="preview" autoplay playsinline style="width: 100%; max-width: 480px;"></video>
+  <!-- ✅ 라이브 카메라 + 썸네일을 하나의 스테이지에 -->
+  <div class="camera-stage">
+    <!-- 실시간 카메라 -->
+    <video id="preview" autoplay playsinline></video>
 
-  <!-- 버튼 그룹 -->
-  <div class="button-group">
-    <button onclick="capturePhoto()">📸 Capture</button>
-    <button onclick="applyFilter()">🎨 Filter</button>
-    <button onclick="insertDate()">📅 Date</button>
-    <button onclick="shareToSNS()">📤 Share</button>
-    <button onclick="translateText()">🔠 Translate</button>
+    <!-- 촬영 미리보기(작게, 좌상단) -->
+    <!-- 기존 img#captured-image를 재사용하되 position으로 올려둠 -->
+    <img id="captured-image" class="preview-thumb" alt="미리보기">
   </div>
 
-  <!-- 캡처 결과 -->
-  <canvas id="canvas" style="display: none;"></canvas>
-  <div id="result">
-    <img id="captured-image" src="" alt="미리보기" style="width: 100%; max-width: 480px;">
+  <!-- 캡처용 캔버스 (기존 유지) -->
+  <canvas id="canvas" style="display:none;"></canvas>
+</div>
+
+<!-- ✅ 하단 고정 버튼 -->
+<div class="bottom-action">
+  <div class="camera-actions">
+    <button onclick="capturePhoto()"   class="btn outline">📸 Capture</button>
+    <button onclick="applyFilter()"    class="btn ghost">🎨 Filter</button>
+    <button onclick="insertDate()"     class="btn ghost">📅 Date</button>
+    <button onclick="shareToSNS()"     class="btn ghost">📤 Share</button>
+    <button onclick="translateText()"  class="btn ghost">🔠 Translate</button>
   </div>
 </div>
 {% endblock %}
